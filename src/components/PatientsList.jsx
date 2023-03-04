@@ -5,7 +5,9 @@ export const PatientsList = ({
   patients,
   setPatient,
   deletPatient,
-  setError
+  setError,
+  edit,
+  setEdit
 }) => {
   console.log(patients)
 
@@ -16,7 +18,7 @@ export const PatientsList = ({
   }, [patients])
 
   return (
-    <div className='md:w-1/2 lg:w-3/5'>
+    <div className='md:w-1/2 lg:w-3/5 max-sm:pt-8'>
       {patients.length ? (
         <>
           <h2 className='font-black text-2xl text-center'>
@@ -36,6 +38,8 @@ export const PatientsList = ({
                 setPatient={setPatient}
                 deletPatient={deletPatient}
                 setError={setError}
+                edit={edit}
+                setEdit={setEdit}
               />
             ))}
           </div>

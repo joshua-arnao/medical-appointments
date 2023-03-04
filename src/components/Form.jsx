@@ -7,7 +7,8 @@ export const Form = ({
   patient,
   setPatient,
   error,
-  setError
+  setError,
+  setEdit
 }) => {
   const [name, setName] = useState('')
   const [owner, setOwner] = useState('')
@@ -42,6 +43,7 @@ export const Form = ({
     setSymptoms('')
 
     setPatient({})
+    setEdit(false)
   }
 
   const handleSubmit = (e) => {

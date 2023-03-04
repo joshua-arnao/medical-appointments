@@ -9,6 +9,7 @@ function App() {
     JSON.parse(localStorage.getItem('patients')) ?? []
   )
   const [patient, setPatient] = useState({})
+  const [edit, setEdit] = useState(false)
 
   // useEffect(() => {
   //   const getLocalStorage = () => {
@@ -43,12 +44,15 @@ function App() {
           setPatient={setPatient}
           error={error}
           setError={setError}
+          setEdit={setEdit}
         />
         <PatientsList
           patients={patients}
           setPatient={setPatient}
           deletPatient={deletPatient}
           setError={setError}
+          edit={edit}
+          setEdit={setEdit}
         />
       </div>
     </div>

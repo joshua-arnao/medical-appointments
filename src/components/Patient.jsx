@@ -1,6 +1,13 @@
 import React from 'react'
 
-export const Patient = ({ patient, setPatient, deletPatient, setError }) => {
+export const Patient = ({
+  patient,
+  setPatient,
+  deletPatient,
+  setError,
+  edit,
+  setEdit
+}) => {
   const { name, owner, email, date, symptoms, id } = patient
 
   const handleDelete = () => {
@@ -15,6 +22,7 @@ export const Patient = ({ patient, setPatient, deletPatient, setError }) => {
   const handleEdit = () => {
     setError(false)
     setPatient(patient)
+    setEdit(true)
   }
 
   return (
@@ -44,23 +52,29 @@ export const Patient = ({ patient, setPatient, deletPatient, setError }) => {
         <span className='font-normal normal-case'>{symptoms}</span>
       </p>
 
-      <div className='flex md:justify-end gap-2'>
-        <button
-          type='button'
-          className='py-2 px-4 text-red-500 font-bold uppercase hover:text-red-800'
-          onClick={handleDelete}
-        >
-          Eliminar
-        </button>
+      {!edit ? (
+        <div className='flex md:justify-end gap-2 max-sm:justify-center'>
+          <button
+            type='button'
+            className='py-2 px-4 text-red-500 font-bold uppercase hover:text-red-800'
+            onClick={handleDelete}
+          >
+            Eliminar
+          </button>
 
-        <button
-          type='button'
-          className='py-2 px-10 border-2 border-indigo-600 text-indigo-600 font-bold uppercase rounded-md hover:bg-indigo-600 hover:text-white transition duration-300'
-          onClick={handleEdit}
-        >
-          Editar
+          <button
+            type='button'
+            className='py-2 px-10 border-2 border-indigo-600 text-indigo-600 font-bold uppercase rounded-md hover:bg-indigo-600 hover:text-white transition duration-300'
+            onClick={handleEdit}
+          >
+            Editar
+          </button>
+        </div>
+      ) : (
+        <button className='bg-gray-400 opacity-50 w-full p-3 text-white uppercase font-bold rounded-md cursor-not-allowed'>
+          Editando...
         </button>
-      </div>
+      )}
     </div>
   )
 }
